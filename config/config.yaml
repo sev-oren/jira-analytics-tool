@@ -1,0 +1,10 @@
+﻿jira:
+  server: "https://issues.apache.org/jira"
+  project_key: "KAFKA"
+  max_results: 50
+logging:
+  level: "INFO"
+  file: "logs/jira_analytics.log"
+plots:
+  output_dir: "plots"
+  top_users_count: 30
