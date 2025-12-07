@@ -112,9 +112,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/1_open_time_histogram.png"
         plot_open_time_histogram(open_time_df, output_path)
         results['open_time'] = {'path': output_path, 'tasks': len(open_time_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     # === ГРАФИК 2: Распределение по приоритетам ===
     print("\n2. Распределение по приоритетам...")
     priority_df = calculate_priority_distribution(issues)
@@ -122,9 +122,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/2_priority_distribution.png"
         plot_priority_distribution_chart(priority_df, output_path)
         results['priority'] = {'path': output_path, 'priorities': len(priority_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     # === ГРАФИК 3: Топ пользователей ===
     print("\n3. Топ пользователей...")
     users_df = calculate_top_users(issues, top_users_count)
@@ -132,9 +132,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/3_top_users.png"
         plot_top_users_chart(users_df, output_path)
         results['top_users'] = {'path': output_path, 'users': len(users_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     # === ГРАФИК 4: Статистика по дням ===
     print("\n4. Статистика по дням...")
     daily_df = calculate_daily_issues_stats(issues)
@@ -142,9 +142,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/4_daily_stats.png"
         plot_daily_issues_chart(daily_df, output_path)
         results['daily'] = {'path': output_path, 'days': len(daily_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     # === ГРАФИК 5: Затраченное время ===
     print("\n5. Затраченное время...")
     time_spent_df = calculate_time_spent_distribution(issues)
@@ -152,9 +152,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/5_time_spent.png"
         plot_time_spent_histogram(time_spent_df, output_path)
         results['time_spent'] = {'path': output_path, 'tasks': len(time_spent_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     # === ГРАФИК 6: Распределение по состояниям ===
     print("\n6. Распределение по состояниям...")
     status_df = calculate_status_time_distribution(issues)
@@ -162,9 +162,9 @@ def build_all_plots(issues, config):
         output_path = f"{output_dir}/6_status_distribution.png"
         plot_status_time_distributions(status_df, output_path)
         results['status'] = {'path': output_path, 'tasks': len(status_df)}
-        print(f"   ✓ Сохранен: {output_path}")
+        print(f"   OK: Сохранен: {output_path}")
     else:
-        print("   ✗ Нет данных")
+        print("   WARNING: Нет данных")
     return results
 def main():
     """Основная функция"""
@@ -213,7 +213,7 @@ def main():
                 path = plot_data['path']
                 if os.path.exists(path):
                     size_kb = os.path.getsize(path) / 1024
-                    print(f"  • {plot_name}: {path} ({size_kb:.1f} KB)")
+                    print(f"  * {plot_name}: {path} ({size_kb:.1f} KB)")
     print(f"\n{'='*60}")
     print("ВЫПОЛНЕНИЕ ЗАВЕРШЕНО!")
     print(f"{'='*60}")
@@ -221,7 +221,7 @@ def main():
     print(f"Графики: plots/")
 if __name__ == "__main__":
     try:
- main()
+        main()
     except KeyboardInterrupt:
         print("\nПрервано пользователем")
     except Exception as e:
